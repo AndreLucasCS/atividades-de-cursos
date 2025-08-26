@@ -1,0 +1,15 @@
+
+' Titulo da Janela
+GraphicsWindow.Title = "Desenhado Formas"
+
+' Definindo as Cores
+GraphicsWindow.BackgroundColor = "Blue"
+GraphicsWindow.PenColor = "DarkBlue"
+
+' Tamanho da Jenela
+GraphicsWindow.Width = 300
+GraphicsWindow.Height = 300
+
+' Desenhando as Formas
+GraphicsWindow.DrawRectangle(100,75,100,85)
+GraphicsWindow.DrawTriangle(180,137,150,92,120,137)

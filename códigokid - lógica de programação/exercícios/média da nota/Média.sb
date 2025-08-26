@@ -1,0 +1,202 @@
+
+' ===========================
+
+' Programa de Média do Aluno
+
+' ===========================
+
+' Abrindo e mudando a janela
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Média do Aluno"
+GraphicsWindow.Height = 380
+GraphicsWindow.Width = 550
+GraphicsWindow.CanResize = "False"
+Sound.PlayChimes()
+
+' Imprimindo titulo e boas-vindas
+GraphicsWindow.FontSize = 24
+GraphicsWindow.BrushColor = "Black"
+GraphicsWindow.DrawText(30,50,"Média do Aluno")
+
+GraphicsWindow.FontSize = 16
+GraphicsWindow.DrawText(30,130,"Seja bem-vindo(a) a Calculadora")
+
+' ===============================
+
+' DESENHANDO TUDO
+
+
+' Campo de Nome do Aluno
+GraphicsWindow.FontSize = 14
+GraphicsWindow.DrawText(30,180,"Nome do aluno:")
+CNome = Controls.AddTextBox(150, 180)
+
+' Campo de Nota 1
+GraphicsWindow.FontSize = 14
+GraphicsWindow.DrawText(30,240,"Nota 1:")
+CNota1 = Controls.AddTextBox(150, 240)
+Controls.SetSize(CNota1, 90, 20)
+
+' Campo de Nota 2
+GraphicsWindow.FontSize = 14
+GraphicsWindow.DrawText(30,280,"Nota 2:")
+CNota2 = Controls.AddTextBox(150, 280)
+Controls.SetSize(CNota2, 90, 20)
+
+' Campo de Nota 3
+GraphicsWindow.FontSize = 14
+GraphicsWindow.DrawText(280,240,"Nota 3:")
+CNota3 = Controls.AddTextBox(400, 240)
+Controls.SetSize(CNota3, 90, 20)
+
+' Campo de Nota 4
+GraphicsWindow.FontSize = 14
+GraphicsWindow.DrawText(280,280,"Nota 4:")
+CNota4 = Controls.AddTextBox(400, 280)
+Controls.SetSize(CNota4, 90, 20)
+
+GraphicsWindow.DrawLine(265,225,265,310)
+
+' Botão Calcular
+
+Controls.AddButton("Calcular", 30, 325)
+Controls.ButtonClicked = Calculando
+
+' ================================
+
+' EXTRAINDO A NOTA INSERIDA
+
+' Detectar Mudança na TextBox
+Controls.TextTyped = ProcessarNota
+
+'Caso haja uma mudança atualizar notas e o nome
+Sub ProcessarNota
+  
+  ' Som de clique
+  Sound.PlayClick()
+  
+  ' Verificando o campo que mudou e atualizar a sua nota
+  
+  If Controls.LastTypedTextBox = CNome Then
+    Nome = Controls.GetTextBoxText(CNome)
+  EndIf
+  
+  If Controls.LastTypedTextBox = CNota1 Then
+    Nota1 = Controls.GetTextBoxText(CNota1)
+  EndIf
+  
+  If Controls.LastTypedTextBox = CNota2 Then
+    Nota2 = Controls.GetTextBoxText(CNota2)
+  EndIf
+  
+  If Controls.LastTypedTextBox = CNota3 Then
+    Nota3 = Controls.GetTextBoxText(CNota3)
+  EndIf
+  
+  If Controls.LastTypedTextBox = CNota4 Then
+    Nota4 = Controls.GetTextBoxText(CNota4)
+  EndIf
+  
+   
+  ' ====================================
+  
+  ' VERIFICAÇÕES DA NOTA
+  
+  
+  ' Verificando se as notas estão de acordo com os limites (de 0 a 10)
+  
+  If Nota1 > 10 Or Nota1 < 0 Then
+    GraphicsWindow.ShowMessage("A Nota tem que estar entre 0 e 10","Erro de Digitação")
+    Controls.SetTextBoxText(CNota1,"")
+    Nota1 = 0
+  EndIf
+  
+  If Nota2 > 10 Or Nota2 < 0 Then
+    GraphicsWindow.ShowMessage("A Nota tem que estar entre 0 e 10","Erro de Digitação")
+    Controls.SetTextBoxText(CNota2,"")
+    Nota2 = 0
+  EndIf
+  
+  If Nota3 > 10 Or Nota3 < 0 Then
+    GraphicsWindow.ShowMessage("A Nota tem que estar entre 0 e 10","Erro de Digitação")
+    Controls.SetTextBoxText(CNota3,"")
+    Nota3 = 0
+  EndIf
+  
+  If Nota4 > 10 Or Nota4 < 0 Then
+    GraphicsWindow.ShowMessage("A Nota tem que estar entre 0 e 10","Erro de Digitação")
+    Controls.SetTextBoxText(CNota4,"")
+    Nota4 = 0
+  EndIf
+  
+  
+EndSub
+
+' ================================
+
+' BOTÃO CÁLCULAR
+
+Sub Calculando
+  
+  ' Processando a média do aluno
+  SomaDasNotas = Nota1+Nota2+Nota3+Nota4
+  MediaDasNotas = SomaDasNotas/4
+  
+  ' Escrevendo carregando
+  GraphicsWindow.FontSize = 10
+  GraphicsWindow.DrawText(115, 332, "Carregando...")
+  
+  ' Esperando 2 segundos para prosseguir com o programa
+  Timer.Interval = 2000
+  Timer.Resume()
+  Timer.Tick = RevelarNota
+  
+EndSub
+
+
+' =============================
+
+' REVELANDO A MÉDIA
+
+
+Sub RevelarNota
+  
+  ' Som de Sino para apresentar a nota
+  Sound.PlayBellRing()
+  
+  ' Parar o timer de 2 segundos de espera
+  Timer.Pause()
+  
+  ' Limpar tela e escrever: Sua média foi
+  GraphicsWindow.Clear()
+  GraphicsWindow.DrawText(30,40, "SUA MÉDIA FOI:")
+  
+  ' Mudando a cor da fonte da média, se a média for menor que 7 fica vermelho, se estiver entre o 7 e 8 amarelo
+  If MediaDasNotas < 7 Then
+    GraphicsWindow.BrushColor = "DarkRed"
+  ElseIf MediaDasNotas >= 7 And MediaDasNotas <= 8 Then
+    GraphicsWindow.BrushColor = "Yellow"
+  EndIf
+  
+  ' Apresentando a média
+  GraphicsWindow.FontSize = 45
+  GraphicsWindow.DrawText(30,60, MediaDasNotas)
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 10
+  GraphicsWindow.DrawLine(10,160,230, 160)
+  
+  ' Revelando se está APROVADO ou não
+  If MediaDasNotas >= 7 Then
+    GraphicsWindow.DrawText(30,220, Nome + " foi aprovado, parabéns!")
+  Else
+    GraphicsWindow.DrawText(30,220, Nome + " foi reprovado, estude mais!")
+  EndIf
+  
+  ' Mostrando a média dos semestres
+  SomaDoSemestre1 = Nota1+Nota2
+  GraphicsWindow.DrawText(30,260, "Média do 1º semestre: " + SomaDoSemestre1/2)
+  SomaDoSemestre2 = Nota3+Nota4
+  GraphicsWindow.DrawText(30,290, "Média do 2º semestre: " + SomaDoSemestre2/2)
+  
+EndSub
+  

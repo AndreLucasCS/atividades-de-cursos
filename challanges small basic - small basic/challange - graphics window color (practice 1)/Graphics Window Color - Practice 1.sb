@@ -1,0 +1,7 @@
+
+GraphicsWindow.BackgroundColor = "DarkGreen"
+GraphicsWindow.BrushColor = "Green"
+GraphicsWindow.PenColor = "Blue"
+GraphicsWindow.FontSize = 20
+GraphicsWindow.DrawEllipse(15,10,130,50)
+GraphicsWindow.DrawText(20,20,"Hello World")

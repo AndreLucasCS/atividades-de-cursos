@@ -1,0 +1,43 @@
+
+TextWindow.WriteLine(" ")
+TextWindow.WriteLine("- PROGRAMA DA MÉDIA DE NOTA -")
+TextWindow.WriteLine(" ")
+
+TextWindow.WriteLine("Olá, Seja Bem-Vindo(a)")
+TextWindow.WriteLine(" ")
+TextWindow.WriteLine("Insira o nome do aluno:")
+Aluno = TextWindow.Read()
+TextWindow.WriteLine(" ")
+
+TextWindow.WriteLine("Insira a primeira nota:")
+NOTA1 = TextWindow.Read()
+TextWindow.WriteLine(" ")
+
+TextWindow.WriteLine("Insira a segunda nota:")
+NOTA2 = TextWindow.Read()
+TextWindow.WriteLine(" ")
+
+TextWindow.WriteLine("Insira a terceira nota:")
+NOTA3 = TextWindow.Read()
+TextWindow.WriteLine(" ")
+
+TextWindow.WriteLine("Insira a quarta nota:")
+NOTA4 = TextWindow.Read()
+TextWindow.WriteLine(" ")
+
+Soma = NOTA1+NOTA2+NOTA3+NOTA4
+Media = Soma/4
+
+If Media > 7 Then
+  TextWindow.WriteLine("A Média do(a) " + Aluno + ":")
+  TextWindow.WriteLine(Media)
+  TextWindow.WriteLine(" ")
+  TextWindow.WriteLine("- ALUNO APROVADO!")
+  TextWindow.WriteLine(" ")
+Else
+  TextWindow.WriteLine("A Média do(a) " + Aluno + ":")
+  TextWindow.WriteLine(Media)
+  TextWindow.WriteLine(" ")
+  TextWindow.WriteLine("- ALUNO REPROVADO!")
+  TextWindow.WriteLine(" ")
+EndIf

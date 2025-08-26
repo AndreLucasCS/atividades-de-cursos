@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outras formatações</title>
+</head>
+<body>
+    
+    <h1>Outras formatações</h1>
+
+    <h2>Código fonte / Pré-formulação</h2>
+    <p>
+        O comando <code>document.getElementById('texte')</code> é escrito em linguagem JavaScript com a tag &lt;code&gt;.
+    </p>
+    <p>
+        Para que o sistema inclua a indentação use a tag &lt;pre&gt;. A seguir um código em linguagem SQL usando as tags &lt;code&gt; e &lt;pre&gt;:
+    </p>
+    <pre> <code>
+    CREATE database Exemplo
+    Use Exemplo
+
+    CREATE table Tabela (
+        Int PRIMARY KEY Identity Chave;
+        Varchar(40) Nome not null;
+        Decimal(10,2) SalarioMensal not null;
+    );
+
+    INSERT INTO Tabela(Nome, SalarioMensal)
+    VALUES('Angela Rodrigues', 3500.00 )
+
+    </pre> </code>
+
+    <h2>Sitações simples</h2>
+    <p>
+        Como diria o pai de um amigo de um professor: <q>o computador é um burro muito rápido</q>. (Fiz isso com a tag &lt;q&gt;)
+    </p>
+
+    <h2>Sitações completas</h2>
+    <p>
+        Use a tag &lt;blockquote&gt; para o delocamento horizontal do trecho e para poder dar crédito ao autor com uma URL.
+    </p>
+    <blockquote cite="https://www.cnnbrasil.com.br/viagemegastronomia/viagem/caso-ingrid-guimaraes-conheca-direitos-do-consumidor-com-companhias-aereas/">
+        A atriz Ingrid Guimarães, 52, relatou uma situação constrangedora em um voo da companhia aérea American Airlines, que fazia a rota Nova York – Rio de Janeiro. Ela afirmou que foi coagida a deixar seu assento na classe Premium Economy para ceder lugar a outro passageiro, devido a um problema com uma cadeira na classe executiva. Mas como devemos proceder em casos de abuso por parte das companhias aéreas?
+    </blockquote>
+
+    <h2>Abreviações</h2>
+    <p>
+        Para mostrar o significado de <abbr title="Hypertext Markup Language">HTML</abbr>, por exemplo, use a tag &lt;abbr&gt;.
+    </p>
+    
+</body>
+</html>
